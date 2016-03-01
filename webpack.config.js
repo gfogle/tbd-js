@@ -1,10 +1,10 @@
 var path = require('path');
 var webpack = require('webpack');
+var base = path.resolve(__dirname);
 
 module.exports = {
 	entry: {
-		lib: './src/index.js',
-		docs: './docs/index.js'
+		docs: './docs/src/docs.js'
 	},
 	output: {
 		path: './docs',
@@ -22,6 +22,11 @@ module.exports = {
 				}
 			}
 		]
+	},
+	resolve: {
+		alias: {
+			TBD: base + '/src/lib.js'
+		}
 	},
 	debug: true,
 	devtool: "source-map",
