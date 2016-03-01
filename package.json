@@ -1,0 +1,25 @@
+{
+  "name": "tbd-js",
+  "version": "0.1.0",
+  "description": "JS framework for building functional, component-centric web applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gfogle/tbd-js.git"
+  },
+  "keywords": [
+    "javascript",
+    "reactive",
+    "functional",
+    "component"
+  ],
+  "author": "George Fogle",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gfogle/tbd-js/issues"
+  },
+  "homepage": "https://github.com/gfogle/tbd-js#readme"
+}
