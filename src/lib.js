@@ -1,3 +1,5 @@
+import dom from "./dom/dom";
+
 let vdom_definitions = {};
 let action_definitions = {};
 let vdom_instances = {};
@@ -19,36 +21,24 @@ module.exports = {
 		} else {
 			vdom_definitions[name] = function() {
 				return {
-					actions: definition.actions,
+					id: guid(),
 					render: definition.render
 				};
 			};
-
-			return vdom_definitions[name];
 		}
 	},
 	mount: function(name, id) {
 		let defn = vdom_definitions[name];
 		let element = document.getElementById(id);
 		let component = new defn();
-		let uid = guid();
 
-		component.id = uid;
-		vdom_instances[uid] = component;
+		vdom_instances[component.id] = component;
 
-		let htmlTree = component.render(
+		element.appendChild(component.render(
 			{}, // no state
 			{}, // no props
-			component.actions.reduce((acc, curr) => {
-				acc[curr] = action_definitions[curr];
-			}, {})
-		);
-
-		element.appendChild(htmlTree);
+			{}  // no actions
+		));
 	},
-	div: function(styles, attrs, children) {
-		let element = document.createElement("DIV");
-
-		return element;
-	}
+	dom: dom
 };
