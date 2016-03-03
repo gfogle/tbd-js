@@ -1,4 +1,5 @@
 import dom from "./dom/dom";
+import perf from "./perf/perf";
 
 let vdom_definitions = {};
 let action_definitions = {};
@@ -8,38 +9,41 @@ function guid() {
 	function s4() {
 		return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
 	}
-	return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-	s4() + '-' + s4() + s4() + s4();
+	return s4() + s4() + '-' + s4() + '-' + s4() + '-' +s4() + '-' + s4() + s4() + s4();
+}
+
+function register(name, definition) {
+	if (vdom_definitions[name]) {
+		throw new Error('Cannot register definition more than once');
+	} else {
+		vdom_definitions[name] = function() {
+			return {
+				id: guid(),
+				render: definition.render
+			};
+		};
+
+		// TODO: should I be wrapping render to do other things?
+		return definition.render;
+	}
+}
+
+function mount(name, id) {
+	let defn = vdom_definitions[name];
+	let element = document.getElementById(id);
+	let component = new defn();
+
+	vdom_instances[component.id] = component;
+
+	element.appendChild(component.render(
+		{}, // no state
+		{}, // no props
+		{}  // no actions
+	));
 }
 
 module.exports = {
-	register: function(name, definition) {
-		if (vdom_definitions[name]) {
-			throw new Error('Cannot register definition more than once');
-		} else {
-			vdom_definitions[name] = function() {
-				return {
-					id: guid(),
-					render: definition.render
-				};
-			};
-
-			// TODO: should I be wrapping render to do other things?
-			return definition.render;
-		}
-	},
-	mount: function(name, id) {
-		let defn = vdom_definitions[name];
-		let element = document.getElementById(id);
-		let component = new defn();
-
-		vdom_instances[component.id] = component;
-
-		element.appendChild(component.render(
-			{}, // no state
-			{}, // no props
-			{}  // no actions
-		));
-	},
+	register: __DEV__ ? perf.instrument('register', register) : register,
+	mount: __DEV__ ? perf.instrument('mount', mount) : mount,
 	dom: dom
 };

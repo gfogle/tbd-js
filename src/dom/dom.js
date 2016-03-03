@@ -1,3 +1,5 @@
+import perf from "../perf/perf";
+
 let dom = {};
 
 function createDomElement(tag, styles, attrs, children) {
@@ -64,9 +66,15 @@ function createValidTags() {
 	];
 
 	validTags.forEach((tag) => {
-		dom[tag] = (styles, attrs, children) => {
-			return createDomElement(tag.toUpperCase(), styles, attrs, children);
-		};
+		if (__DEV__) {
+			dom[tag] = perf.instrument(tag, (styles, attrs, children) => {
+				return createDomElement(tag.toUpperCase(), styles, attrs, children);
+			});
+		} else {
+			dom[tag] = (styles, attrs, children) => {
+				return createDomElement(tag.toUpperCase(), styles, attrs, children);
+			};
+		}
 	});
 };
 
