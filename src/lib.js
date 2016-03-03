@@ -16,15 +16,16 @@ function register(name, definition) {
 	if (vdom_definitions[name]) {
 		throw new Error('Cannot register definition more than once');
 	} else {
+		// TODO: do i need to save these definitions at all?
+		// TODO: should i be
 		vdom_definitions[name] = function() {
 			return {
 				id: guid(),
-				render: definition.render
+				render: __DEV__ ? perf.instrument(name + "__render", definition.render) : definition.render
 			};
 		};
 
-		// TODO: should I be wrapping render to do other things?
-		return definition.render;
+		return vdom_definitions[name]().render;
 	}
 }
 
@@ -43,7 +44,7 @@ function mount(name, id) {
 }
 
 module.exports = {
-	register: __DEV__ ? perf.instrument('register', register) : register,
-	mount: __DEV__ ? perf.instrument('mount', mount) : mount,
+	register: __DEV__ ? perf.instrument('core::register', register) : register,
+	mount: __DEV__ ? perf.instrument('core::mount', mount) : mount,
 	dom: dom
 };

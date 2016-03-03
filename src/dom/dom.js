@@ -67,7 +67,7 @@ function createValidTags() {
 
 	validTags.forEach((tag) => {
 		if (__DEV__) {
-			dom[tag] = perf.instrument(tag, (styles, attrs, children) => {
+			dom[tag] = perf.instrument('dom::' + tag, (styles, attrs, children) => {
 				return createDomElement(tag.toUpperCase(), styles, attrs, children);
 			});
 		} else {
