@@ -26,12 +26,19 @@
         "no-undefined": 0,
         "no-void": 2,
         "semi": 2,
-        "space-after-keywords": 2,
+        "keyword-spacing": 2,
         "wrap-iife": [2, "outside"],
         "dot-notation": 0
     },
     "ecmaFeatures": {
         "modules": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "modules": true
+        },
     },
     "plugins": [
     ]
