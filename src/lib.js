@@ -23,6 +23,9 @@ module.exports = {
 					render: definition.render
 				};
 			};
+
+			// TODO: should I be wrapping render to do other things?
+			return definition.render;
 		}
 	},
 	mount: function(name, id) {

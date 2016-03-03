@@ -1,7 +1,6 @@
 let dom = {};
 
 function createDomElement(tag, styles, attrs, children) {
-	//console.log(tag, " : ", styles, " : ", " : ", attrs, " : ", children);
 	let element = document.createElement(tag);
 
 	if (element instanceof HTMLUnknownElement) {
