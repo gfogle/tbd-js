@@ -15,13 +15,14 @@ TBD.register('Root', {
 			invalid: 'fails?',
 			borderRadius: 'abc'
 		};
-		return div(
-			divStyles,
-			{}, // attrs
-			[
+		const divAttrs = {
+			onclick: function(event) {
+				alert('clicked a div!');
+			}
+		};
+		return div(divStyles, divAttrs, [
 				// children
-			]
-		);
+		]);
 	}
 });
 

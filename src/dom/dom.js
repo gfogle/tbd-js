@@ -11,6 +11,10 @@ function createDomElement(tag, styles, attrs, children) {
 			element.style[s] = styles[s];
 		});
 
+		Object.keys(attrs).forEach((a) => {
+			element[a] = attrs[a];
+		});
+
 		return element;
 	}
 }
