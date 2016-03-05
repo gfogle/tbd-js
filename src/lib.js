@@ -10,7 +10,7 @@ function register(name, definition) {
 	if (vdom_definitions[name]) {
 		throw new Error('Cannot register definition more than once');
 	} else {
-		vdom_definitions[name] = definition;
+		vdom_definitions[name] = new Component(name, definition);
 
 		return vdom_definitions[name].render;
 	}
