@@ -1,0 +1,75 @@
+import TBD from "TBD";
+
+const { div, h2, hr, p, code, pre } = TBD.dom;
+const styles = {
+	simpleHeader: {
+		textAlign: 'center',
+		fontWeight: '500'
+	},
+	simpleSubheader: {
+		textAlign: 'center'
+	},
+	basicContainer: {
+		borderRadius: '2px',
+		backgroundColor: '#e0e0e0',
+		padding: '15px',
+		border: 'solid 1px #c0c0c0'
+	},
+	basicComponent: {
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center'
+	}
+};
+const strings = {
+	simple: 'Building Simple Components',
+	simpleSubheader: 'Simple components, i.e. display-only components are super simple:'
+};
+
+function buildBasic() {
+	return (
+`import TBD from "TBD";
+
+const { div, nav, ul, li, span, button } = TBD.dom;
+const styles = {
+	divStyles: {
+		position: 'absolute',
+		top: 0,
+		left: 0,
+		bottom: 0,
+		right: 0,
+		backgroundColor: '#303030',
+		overflowY: 'auto',
+		paddingBottom: '45px'
+	}
+};
+
+TBD.register('Root', {
+	render: function(state, props, actions) {
+		return (
+			div(styles.divStyles, {}, [
+				label({}, {}, 'Hello World')
+			])
+		);
+	}
+});
+
+TBD.mount('Root', 'root');`
+	);
+}
+
+let BasicFeatures = TBD.register('BasicFeatures', {
+	render: function render(state, props, actions) {
+		return (
+			div({}, {}, [
+				h2(styles.simpleHeader, {}, strings.simple),
+				p(styles.simpleSubheader, {}, strings.simpleSubheader),
+				div(styles.basicContainer, {}, [
+					pre(styles.basicComponent, {}, buildBasic())
+				])
+			])
+		);
+	}
+});
+
+export default BasicFeatures;

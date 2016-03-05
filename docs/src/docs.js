@@ -2,7 +2,6 @@ import TBD from "TBD";
 import TopNav from "./top-nav/top-nav";
 import Home from "./home/home";
 
-const { register, mount } = TBD;
 const { div, nav, ul, li, span, button } = TBD.dom;
 const styles = {
 	divStyles: {

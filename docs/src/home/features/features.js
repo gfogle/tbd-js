@@ -1,6 +1,5 @@
 import TBD from "TBD";
 
-const { register } = TBD;
 const { div, span, button, h4, p, hr } = TBD.dom;
 const styles = {
 	features: {
