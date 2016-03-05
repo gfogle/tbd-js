@@ -6,17 +6,20 @@ const styles = {
 	navStyles: {
 		width: '100%',
 		height: '55px',
-		backgroundColor: '#FFCF4B',
+		backgroundColor: '#505050',
 		display: 'flex',
 		flexDirection: 'row',
-		boxShadow: '0px 2px 4px #101010'
+		boxShadow: '0px 2px 4px #101010',
+		zIndex: 5,
+		position: 'absolute'
 	},
 	logoStyles: {
 		width: '125px',
 		height: '55px',
 		lineHeight: '55px',
 		paddingLeft: '15px',
-		flex: 1
+		flex: 1,
+		color: 'white'
 	},
 	navListStyles: {
 		display: 'flex',
@@ -26,7 +29,8 @@ const styles = {
 	navListItemStyles: {
 		listStyleType: 'none',
 		minWidth: '125px',
-		textAlign: 'center'
+		textAlign: 'center',
+		color: 'white'
 	}
 };
 
@@ -38,8 +42,8 @@ let TopNav = TBD.register('TopNav', {
 				div(styles.logoStyles, {}, [span({paddingLeft: '15px'}, {}, 'tbdJS')]),
 				ul(styles.navListStyles, {}, [
 					li(styles.navListItemStyles, {}, [span({}, {}, 'About')]),
-					li(styles.navListItemStyles, {}, [span({}, {}, 'Features')]),
 					li(styles.navListItemStyles, {}, [span({}, {}, 'Docs'),]),
+					li(styles.navListItemStyles, {}, [span({}, {}, 'Blog'),]),
 					li(styles.navListItemStyles, {}, [span({}, {}, 'Contribute')])
 				]),
 				span({display: 'flex', flex: '1'}),
