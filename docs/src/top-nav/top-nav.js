@@ -11,7 +11,7 @@ const styles = {
 		flexDirection: 'row',
 		boxShadow: '0px 2px 4px #101010',
 		zIndex: 5,
-		position: 'absolute'
+		position: 'fixed'
 	},
 	logoStyles: {
 		width: '125px',

@@ -12,8 +12,8 @@ const styles = {
 		bottom: 0,
 		right: 0,
 		backgroundColor: '#303030',
-		invalid: 'fails?',
-		borderRadius: 'abc'
+		overflowY: 'auto',
+		paddingBottom: '45px'
 	}
 };
 
