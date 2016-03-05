@@ -14,11 +14,6 @@ function instrument(name, fn) {
 }
 
 function report(name, amount) {
-	if (!name.length) {
-		console.warn('You\'re trying to report perf on an anonymous or unnamed fn!'); //eslint-disable-line no-console
-		name = "???";
-	}
-
 	amount = parseFloat(amount.toFixed(2));
 
 	if (measurements[name]) {
