@@ -41,7 +41,7 @@ function createDomElement(tag, styles, attrs, children) {
 }
 
 function createValidTags() {
-	const validTags = helpers.getValidTags();
+	const validTags = helpers.validTags();
 
 	validTags.forEach((tag) => {
 		if (__DEV__) {
