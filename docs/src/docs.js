@@ -1,5 +1,6 @@
 import TBD from "TBD";
 import Home from "./home/home";
+import About from "./about/about";
 
 const { div, nav, ul, li, span, button } = TBD.dom;
 const styles = {
@@ -20,6 +21,11 @@ TBD.router.config([
 		url: '/',
 		name: 'Home',
 		component: 'Home'
+	},
+	{
+		url: '/about',
+		name: 'About',
+		component: 'About'
 	}
 ]);
 

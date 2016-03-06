@@ -1,6 +1,5 @@
 import TBD from "TBD";
 
-const { register } = TBD;
 const { nav, div, ul, li, span } = TBD.dom;
 const styles = {
 	navStyles: {
@@ -19,7 +18,8 @@ const styles = {
 		lineHeight: '55px',
 		paddingLeft: '15px',
 		flex: 1,
-		color: 'white'
+		color: 'white',
+		cursor: 'pointer'
 	},
 	navListStyles: {
 		display: 'flex',
@@ -30,18 +30,27 @@ const styles = {
 		listStyleType: 'none',
 		minWidth: '125px',
 		textAlign: 'center',
-		color: 'white'
+		color: 'white',
+		cursor: 'pointer'
 	}
 };
+
+function route(name) {
+	TBD.router.route(name);
+}
 
 let TopNav = TBD.register('TopNav', {
 	render: function(state, props, actions) {
 		// TODO: this puts a ton of calls on stack?
 		return (
 			nav(styles.navStyles, {}, [
-				div(styles.logoStyles, {}, [span({paddingLeft: '15px'}, {}, 'tbdJS')]),
+				div(styles.logoStyles, {
+					onclick: (event) => { route('Home'); }
+				}, [span({paddingLeft: '15px'}, {}, 'tbdJS')]),
 				ul(styles.navListStyles, {}, [
-					li(styles.navListItemStyles, {}, [span({}, {}, 'About')]),
+					li(styles.navListItemStyles, {
+						onclick: (event) => { route('About'); }
+					}, [span({}, {}, 'About')]),
 					li(styles.navListItemStyles, {}, [span({}, {}, 'Docs'),]),
 					li(styles.navListItemStyles, {}, [span({}, {}, 'Blog'),]),
 					li(styles.navListItemStyles, {}, [span({}, {}, 'Contribute')])

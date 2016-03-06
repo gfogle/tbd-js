@@ -1,4 +1,5 @@
 import perf from "../perf/perf";
+import events from "../events/events";
 
 var routes = {};
 var currentRoute;
@@ -21,7 +22,11 @@ function config(opts) {
 }
 
 function route(route) {
-
+	if (routes[route] && currentRoute !== route) {
+		currentRoute = route;
+		window.hash = '#/' + route.toLowerCase();
+		events.publish('routeChanged', route);
+	}
 }
 
 function current() {
