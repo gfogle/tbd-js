@@ -3,6 +3,7 @@ import TopNav from "../top-nav/top-nav";
 import HomeHero from "./hero/hero";
 import HomeFeatures from "./features/features";
 import BasicFeatures from "./basics/basics";
+import BasicRouting from "./basic-routing/basic-routing";
 
 const { div, h2, hr, p, code, pre } = TBD.dom;
 const styles = {
@@ -55,6 +56,8 @@ let Home = TBD.register('Home', {
 						HomeFeatures(),
 						hr(styles.spacer),
 						BasicFeatures(),
+						hr(styles.spacer),
+						BasicRouting(),
 						hr(styles.spacer)
 					])
 				])

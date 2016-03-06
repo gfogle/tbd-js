@@ -24,7 +24,7 @@ function config(opts) {
 function route(route) {
 	if (routes[route] && currentRoute !== route) {
 		currentRoute = route;
-		window.hash = '#/' + route.toLowerCase();
+		window.location.hash = '#/' + route.toLowerCase();
 		events.publish('routeChanged', route);
 	}
 }

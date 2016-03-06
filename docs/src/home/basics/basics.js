@@ -48,7 +48,7 @@ const styles = {
 };
 
 // register a named-component, and give it an object definition
-TBD.register('Root', {
+TBD.register('Home', {
 	// components take a render function that will return constructed HTML
 	render: function(state, props, actions) {
 		return (
@@ -60,7 +60,8 @@ TBD.register('Root', {
 });
 
 // mount a named component as the top-most level component
-TBD.mount('Root', 'root');`
+// with a 2nd argument of 'root' which is the #id in your index.html
+TBD.mount('Home', 'root');`
 	);
 }
 

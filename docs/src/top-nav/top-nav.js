@@ -41,7 +41,6 @@ function route(name) {
 
 let TopNav = TBD.register('TopNav', {
 	render: function(state, props, actions) {
-		// TODO: this puts a ton of calls on stack?
 		return (
 			nav(styles.navStyles, {}, [
 				div(styles.logoStyles, {
