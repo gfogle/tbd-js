@@ -1,9 +1,9 @@
 import dom from "./dom/dom";
 import perf from "./perf/perf";
 import Component from "./component/component";
+import router from "./router/router";
 
 let vdom_definitions = {};
-let action_definitions = {};
 let vdom_instances = {};
 
 function register(name, definition) {
@@ -33,5 +33,6 @@ function mount(name, id) {
 module.exports = {
 	register: __DEV__ ? perf.instrument('core::register', register) : register,
 	mount: __DEV__ ? perf.instrument('core::mount', mount) : mount,
-	dom: dom
+	dom: dom,
+	router: router
 };

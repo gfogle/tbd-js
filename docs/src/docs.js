@@ -1,5 +1,4 @@
 import TBD from "TBD";
-import TopNav from "./top-nav/top-nav";
 import Home from "./home/home";
 
 const { div, nav, ul, li, span, button } = TBD.dom;
@@ -16,16 +15,15 @@ const styles = {
 	}
 };
 
-TBD.register('Root', {
-	render: function(state, props, actions) {
-		// TODO: this puts a ton of calls on stack?
-		return (
-			div(styles.divStyles, {}, [
-				TopNav(),
-				Home()
-			])
-		);
+TBD.router.config([
+	{
+		url: '/',
+		name: 'Home',
+		component: 'Home'
 	}
-});
+]);
 
-TBD.mount('Root', 'root');
+TBD.mount(
+	TBD.router.currentRoute(),
+	'root'
+);

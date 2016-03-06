@@ -1,10 +1,21 @@
 import TBD from "TBD";
+import TopNav from "../top-nav/top-nav";
 import HomeHero from "./hero/hero";
 import HomeFeatures from "./features/features";
 import BasicFeatures from "./basics/basics";
 
 const { div, h2, hr, p, code, pre } = TBD.dom;
 const styles = {
+	divStyles: {
+		position: 'absolute',
+		top: 0,
+		left: 0,
+		bottom: 0,
+		right: 0,
+		backgroundColor: '#303030',
+		overflowY: 'auto',
+		paddingBottom: '45px'
+	},
 	container: {
 		display: 'flex',
 		flexDirection: 'column',
@@ -36,12 +47,16 @@ const strings = {
 let Home = TBD.register('Home', {
 	render: function render(state, props, actions) {
 		return (
-			div(styles.container, {}, [
-				HomeHero(),
-				div(styles.homeContent, {}, [
-					HomeFeatures(),
-					hr(styles.spacer),
-					BasicFeatures()
+			div(styles.divStyles, {}, [
+				TopNav(),
+				div(styles.container, {}, [
+					HomeHero(),
+					div(styles.homeContent, {}, [
+						HomeFeatures(),
+						hr(styles.spacer),
+						BasicFeatures(),
+						hr(styles.spacer)
+					])
 				])
 			])
 		);

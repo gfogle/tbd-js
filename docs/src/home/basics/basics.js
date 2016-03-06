@@ -17,8 +17,7 @@ const styles = {
 	},
 	basicComponent: {
 		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center'
+		flexDirection: 'column'
 	}
 };
 const strings = {
@@ -28,9 +27,13 @@ const strings = {
 
 function buildBasic() {
 	return (
-`import TBD from "TBD";
+`
+import TBD from "TBD"; // import top-level namespace
 
+// destructure various dom functions from TBD.dom
 const { div, nav, ul, li, span, button } = TBD.dom;
+
+// optionally, create inline styles objects... you can choose to use CSS
 const styles = {
 	divStyles: {
 		position: 'absolute',
@@ -44,7 +47,9 @@ const styles = {
 	}
 };
 
+// register a named-component, and give it an object definition
 TBD.register('Root', {
+	// components take a render function that will return constructed HTML
 	render: function(state, props, actions) {
 		return (
 			div(styles.divStyles, {}, [
@@ -54,6 +59,7 @@ TBD.register('Root', {
 	}
 });
 
+// mount a named component as the top-most level component
 TBD.mount('Root', 'root');`
 	);
 }
